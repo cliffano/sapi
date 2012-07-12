@@ -1,0 +1,46 @@
+{
+  "name": "sapi",
+  "description": "Sensis API Node.js client",
+  "keywords": [
+    "sapi",
+    "sensis",
+    "search",
+    "business listings",
+    "australia"
+  ],
+  "version": "0.0.1",
+  "homepage": "http://github.com/cliffano/sapi",
+  "author": "Cliffano Subagio <blah@cliffano.com> (http://blog.cliffano.com)",
+  "bin": {
+    "sapi": "./bin/sapi"
+  },
+  "main": "./lib/sapi",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/cliffano/sapi.git"
+  },
+  "bugs": {
+    "url": "http://github.com/cliffano/sapi/issues"
+  },
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "test": "./test"
+  },
+  "dependencies": {
+    "request": "2.9.203"
+  },
+  "devDependencies": {
+    "sandboxed-module": "0.1.3"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/cliffano/sapi/raw/master/LICENSE"
+    }
+  ]
+}
+ 
