@@ -2,12 +2,12 @@ var bag = require('bagofholding'),
   sandbox = require('sandboxed-module'),
   should = require('should'),
   checks, mocks,
-  metadata;
+  metadata = require('../../lib/endpoint/metadata');
 
 describe('metadata', function () {
 
   function create(checks, mocks) {
-    return sandbox.require('../../lib/metadata', {
+    return sandbox.require('../../lib/endpoint/metadata', {
       requires: mocks ? mocks.requires : {},
       globals: {}
     });
@@ -18,9 +18,41 @@ describe('metadata', function () {
     mocks = {};
   });
 
-  describe('bar', function () {
+  describe('name', function () {
 
-    it('should foo when bar', function () {
+    it('should have endpoint name', function () {
+      metadata.name.should.equal('metadata');
+    });
+  });
+
+  describe('params', function () {
+
+    it('should have required params', function () {
+      should.exist(metadata.params.required);
+    });
+
+    it('should have optional params', function () {
+      should.exist(metadata.params.optional);
+    });
+  });
+
+  describe('path', function () {
+
+    it('should return endpoint name and dataType param as path', function () {
+      metadata.path({ dataType: 'somedatatype' }).should.equal('metadata/somedatatype');
+    });
+  });
+
+  describe('handlers', function () {
+
+    it('should pass result to callback when success handler is called', function () {
+      function cb(err, result) {
+        checks.handler_err = err;
+        checks.handler_result = result;
+      }
+      metadata.handlers(cb)['200']({ foo: 'bar' });
+      should.not.exist(checks.handler_err);
+      checks.handler_result.foo.should.equal('bar');
     });
   });
 });
