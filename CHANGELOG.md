@@ -1,4 +1,7 @@
-### 0.0.4 (SNAPSHOT)
+### 0.0.5 (SNAPSHOT)
+*
+
+### 0.0.4
 * Add proxy support.
 * Modify endpoint callback to return SAPI response object.
 
