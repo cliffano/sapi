@@ -5,7 +5,7 @@ sapi [![http://travis-ci.org/cliffano/sapi](https://secure.travis-ci.org/cliffan
 
 This is handy when you want to use [Sensis API](http://developers.sensis.com.au/about) service from a Node.js application. Sapi module provides a chainable interface to set the endpoint parameters.
 
-Compatible to Sensis API ob-20110511.
+Tested with Sensis API version ob-20110511.
 
 Installation
 ------------
