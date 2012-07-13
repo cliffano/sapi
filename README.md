@@ -3,7 +3,7 @@ sapi [![http://travis-ci.org/cliffano/sapi](https://secure.travis-ci.org/cliffan
 
 [Sensis API](http://developers.sensis.com.au/about) Node.js client.
 
-This is handy when you want to use [Sensis API](http://developers.sensis.com.au/about) service from a Node.js application. Sapi module provides a chainable interface to set the endpoint parameters.
+This is handy when you want to use [Sensis API](http://developers.sensis.com.au/about) service from a Node.js application. This Sapi module provides a chainable interface to set the endpoint parameters.
 
 Tested with Sensis API version ob-20110511.
 
@@ -23,7 +23,7 @@ Usage
 
     var sapi = new (require('sapi'))('key', 'http://api.sensis.com.au/ob-20110511/test/');
 
-    sapi.proxy('http://proxy:8080'); // optional
+    sapi.proxy('http://user:pass@proxy:8080'); // optional
 
 Parameters can then be chained to an endpoint:
 
@@ -44,16 +44,6 @@ Search for restaurants in Melbourne:
         ...
       });
 
-Send report events:
-
-    sapi
-      .userIp('192.1.2.3')
-      .id('VyY2UiOi')
-      .content('(03) 1234 5678')
-      .report(function (err, result) {
-        ...
-      });
-
 Get listing details by ID:
 
     sapi
@@ -70,10 +60,20 @@ Retrieve categories metadata:
         ...
       });
 
+Send report events:
+
+    sapi
+      .userIp('192.1.2.3')
+      .id('VyY2UiOi')
+      .content('(03) 1234 5678')
+      .report(function (err, result) {
+        ...
+      });
+
 Endpoints
 ---------
 
-Sensis API service provides the following [endpoints](http://developers.sensis.com.au/docs/using_endpoints), checkout their documentation for more detailed explanation, a list of parameters, and response message structure for each endpoint:
+Check out Sensis API documentation for further details of the [endpoints](http://developers.sensis.com.au/docs/using_endpoints), a list of parameters, and response message structure:
 
 * [Search](http://developers.sensis.com.au/docs/endpoint_reference/Search)
 * [Get by Listing ID](http://developers.sensis.com.au/docs/endpoint_reference/Get_by_Listing_ID)
