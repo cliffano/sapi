@@ -3,7 +3,9 @@ sapi [![http://travis-ci.org/cliffano/sapi](https://secure.travis-ci.org/cliffan
 
 [Sensis API](http://developers.sensis.com.au/about) Node.js client.
 
-Use Sapi 
+This is handy when you want to use [Sensis API](http://developers.sensis.com.au/about) service from a Node.js application. Sapi module provides a chainable interface to set the endpoint parameters.
+
+Compatible to Sensis API ob-20110511.
 
 Installation
 ------------
@@ -19,19 +21,61 @@ or as a dependency in package.json file:
 Usage
 -----
 
-    var sapi = require('sapi'),
-      s = new sapi('key', 'http://sapi/version/env/');
+    var sapi = new (require('sapi'))('key', 'http://api.sensis.com.au/ob-20110511/test/');
 
-Set proxy server (optional):
+    sapi.proxy('http://proxy:8080'); // optional
 
-    s.proxy('http://proxy:8080');
+Parameters can then be chained to an endpoint:
 
-Search endpoint
+    sapi
+      .param1('value1')
+      .param2('value2')
+      .param3('value3')
+      .endpoint(function (err, result) {
+        ...
+      });
 
-    s.query('restaurant').location('222 Lonsdale St, Melbourne, VIC 3000').search(function (err, result) {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(require('util').inspect(result));
-      }
-    });
+Search for restaurants in Melbourne:
+
+    sapi
+      .query('restaurants')
+      .location('222 Lonsdale St, Melbourne, VIC 3000')
+      .search(function (err, result) {
+        ...
+      });
+
+Send report events:
+
+    sapi
+      .userIp('192.1.2.3')
+      .id('VyY2UiOi')
+      .content('(03) 1234 5678')
+      .report(function (err, result) {
+        ...
+      });
+
+Get listing details by ID:
+
+    sapi
+      .query('12345')
+      .getByListingId(function (err, result) {
+        ...
+      });
+
+Retrieve categories metadata:
+
+    sapi
+      .dataType('categories')
+      .metadata(function (err, result) {
+        ...
+      });
+
+Endpoints
+---------
+
+Sensis API service provides the following [endpoints](http://developers.sensis.com.au/docs/using_endpoints), checkout their documentation for more detailed explanation, a list of parameters, and response message structure for each endpoint:
+
+* [Search](http://developers.sensis.com.au/docs/endpoint_reference/Search)
+* [Get by Listing ID](http://developers.sensis.com.au/docs/endpoint_reference/Get_by_Listing_ID)
+* [Report](http://developers.sensis.com.au/docs/endpoint_reference/Report)
+* [Metadata](http://developers.sensis.com.au/docs/endpoint_reference/Metadata)
