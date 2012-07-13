@@ -9,7 +9,7 @@ describe('sapi', function () {
   function create(checks, mocks) {
     return sandbox.require('../lib/sapi', {
       requires: mocks ? mocks.requires : {},
-      globals: {}
+      globals: mocks ? mocks.globals : {}
     });
   }
 
@@ -39,12 +39,57 @@ describe('sapi', function () {
       };
       sapi = new (create(checks, mocks))();
       sapi.search(function cb(err, result) {
-        checks.sapi_search_err = err;
-        checks.sapi_search_result = result;
+        checks.sapi_http_err = err;
+        checks.sapi_http_result = result;
         done();
       });
-      checks.sapi_search_err.message.should.equal('someerror');
-      should.not.exist(checks.sapi_search_result);
+      checks.sapi_http_err.message.should.equal('someerror');
+      should.not.exist(checks.sapi_http_result);
+    });
+
+    it('should pass authentication failed error to callback when result has status code 403 and key is provided', function (done) {
+      mocks.request_result = { statusCode: 403 };
+      mocks.requires = {
+        request: bag.mock.request(checks, mocks)
+      };
+      sapi = new (create(checks, mocks))('somekey');
+      sapi.search(function cb(err, result) {
+        checks.sapi_http_err = err;
+        checks.sapi_http_result = result;
+        done();
+      });
+      checks.sapi_http_err.message.should.equal('Authentication failed -  invalid key somekey');
+      should.not.exist(checks.sapi_http_result);
+    });
+
+    it('should pass authentication required error to callback when result has status code 403 and key is not provided', function (done) {
+      mocks.request_result = { statusCode: 403 };
+      mocks.requires = {
+        request: bag.mock.request(checks, mocks)
+      };
+      sapi = new (create(checks, mocks))();
+      sapi.search(function cb(err, result) {
+        checks.sapi_http_err = err;
+        checks.sapi_http_result = result;
+        done();
+      });
+      checks.sapi_http_err.message.should.equal('SAPI requires authentication - set key to SAPI instance');
+      should.not.exist(checks.sapi_http_result);
+    });
+
+    it('should pass error with status code and body to callback when request responds with unexpected status code', function (done) {
+      mocks.request_result = { statusCode: 503, body: 'unexpectedbody' };
+      mocks.requires = {
+        request: bag.mock.request(checks, mocks)
+      };
+      sapi = new (create(checks, mocks))('somekey');
+      sapi.search(function cb(err, result) {
+        checks.sapi_http_err = err;
+        checks.sapi_http_result = result;
+        done();
+      });
+      checks.sapi_http_err.message.should.equal('Unexpected status code 503 from SAPI\nResponse body:\nunexpectedbody');
+      should.not.exist(checks.sapi_http_result);
     });
   });
 
@@ -60,6 +105,22 @@ describe('sapi', function () {
       sapi = new (create(checks, mocks))('somekey').proxy('http://someproxy');
       sapi._proxy.should.equal('http://someproxy');
     });
+
+    it('should set environment variable http_proxy as proxy when it is not set via proxy function', function (done) {
+      mocks.process_env = { http_proxy: 'http://someproxy' };
+      mocks.request_result = { statusCode: 403 };
+      mocks.requires = {
+        request: bag.mock.request(checks, mocks)
+      };
+      mocks.globals = {
+        process: bag.mock.process(checks, mocks)
+      };
+      sapi = new (create(checks, mocks))('somekey');
+      sapi.search(function cb(err, result) {
+        done();
+      });
+      checks.request_opts.proxy.should.equal('http://someproxy');
+    });    
   });
 });
  
