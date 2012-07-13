@@ -46,10 +46,11 @@ describe('metadata', function () {
 
   describe('handlers', function () {
 
-    it('should pass result to callback when success handler is called', function () {
+    it('should pass result to callback when success handler is called', function (done) {
       function cb(err, result) {
         checks.handler_err = err;
         checks.handler_result = result;
+        done();
       }
       metadata.handlers(cb)['200']({ foo: 'bar' });
       should.not.exist(checks.handler_err);
