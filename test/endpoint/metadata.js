@@ -2,7 +2,7 @@ var bag = require('bagofholding'),
   sandbox = require('sandboxed-module'),
   should = require('should'),
   checks, mocks,
-  metadata = require('../../lib/endpoint/metadata');
+  metadata;
 
 describe('metadata', function () {
 
@@ -16,6 +16,7 @@ describe('metadata', function () {
   beforeEach(function () {
     checks = {};
     mocks = {};
+    metadata = create(checks, mocks);
   });
 
   describe('name', function () {

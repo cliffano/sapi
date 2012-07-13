@@ -2,7 +2,7 @@ var bag = require('bagofholding'),
   sandbox = require('sandboxed-module'),
   should = require('should'),
   checks, mocks,
-  search = require('../../lib/endpoint/search');
+  search;
 
 describe('search', function () {
 
@@ -16,6 +16,7 @@ describe('search', function () {
   beforeEach(function () {
     checks = {};
     mocks = {};
+    search = create(checks, mocks);
   });
 
   describe('name', function () {

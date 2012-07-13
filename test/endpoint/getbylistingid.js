@@ -2,7 +2,7 @@ var bag = require('bagofholding'),
   sandbox = require('sandboxed-module'),
   should = require('should'),
   checks, mocks,
-  getbylistingid = require('../../lib/endpoint/getbylistingid');
+  getbylistingid;
 
 describe('getbylistingid', function () {
 
@@ -16,6 +16,7 @@ describe('getbylistingid', function () {
   beforeEach(function () {
     checks = {};
     mocks = {};
+    getbylistingid = create(checks, mocks);
   });
 
   describe('name', function () {
