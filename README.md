@@ -1,7 +1,9 @@
 sapi [![http://travis-ci.org/cliffano/sapi](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi)
 -----------
 
-[Sensis API](http://developers.sensis.com.au/about) Node.js client
+[Sensis API](http://developers.sensis.com.au/about) Node.js client.
+
+Use Sapi 
 
 Installation
 ------------
@@ -19,6 +21,12 @@ Usage
 
     var sapi = require('sapi'),
       s = new sapi('key', 'http://sapi/version/env/');
+
+Set proxy server (optional):
+
+    s.proxy('http://proxy:8080');
+
+Search endpoint
 
     s.query('restaurant').location('222 Lonsdale St, Melbourne, VIC 3000').search(function (err, result) {
       if (err) {
