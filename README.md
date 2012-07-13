@@ -39,7 +39,7 @@ Search for restaurants in Melbourne:
 
     sapi
       .query('restaurants')
-      .location('222 Lonsdale St, Melbourne, VIC 3000')
+      .location('Melbourne')
       .search(function (err, result) {
         ...
       });
