@@ -1,9 +1,9 @@
-sapi [![http://travis-ci.org/cliffano/sapi](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi)
+Sapi [![http://travis-ci.org/cliffano/sapi](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi)
 -----------
 
 [Sensis API](http://developers.sensis.com.au/about) Node.js client.
 
-This is handy when you want to use [Sensis API](http://developers.sensis.com.au/about) service from a Node.js application. This Sapi module provides a chainable interface to set the endpoint parameters.
+This is handy when you want to use [Sensis API](http://developers.sensis.com.au/about) service from a Node.js application. Sapi module provides a chainable interface to set the endpoint parameters.
 
 Tested with Sensis API version ob-20110511.
 
