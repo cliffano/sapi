@@ -1,4 +1,7 @@
-### 0.0.5 (SNAPSHOT)
+### 0.0.6 (SNAPSHOT)
+*
+
+### 0.0.5
 * Handle non-200 endpoint response.
 
 ### 0.0.4
