@@ -1,4 +1,5 @@
 var bag = require('bagofholding'),
+  _jscov = require('../lib/sapi'),
   sandbox = require('sandboxed-module'),
   should = require('should'),
   checks, mocks,
@@ -103,6 +104,21 @@ describe('sapi', function () {
       });
       checks.request_opts.qs.query.should.equal('somequery');
       checks.request_opts.qs.location.should.equal('somelocation');
+    });
+
+    it('should pass result to custom handler callback', function (done) {
+      mocks.request_result = { statusCode: 200, body: '{ "foo": "bar" }' };
+      mocks.requires = {
+        request: bag.mock.request(checks, mocks)
+      };
+      sapi = new (create(checks, mocks))('somekey');
+      sapi.search(function cb(err, result) {
+        checks.sapi_http_err = err;
+        checks.sapi_http_result = result;
+        done();
+      });
+      should.not.exist(checks.sapi_http_err);
+      checks.sapi_http_result.foo.should.equal('bar');
     });
   });
 
