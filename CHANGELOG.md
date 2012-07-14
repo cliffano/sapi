@@ -1,5 +1,5 @@
 ### 0.0.5 (SNAPSHOT)
-*
+* Handle non-200 endpoint response.
 
 ### 0.0.4
 * Add proxy support.

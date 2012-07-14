@@ -56,6 +56,17 @@ describe('getbylistingid', function () {
       should.not.exist(checks.handler_err);
       checks.handler_result.foo.should.equal('bar');
     });
+
+    it('should pass error and result to callback when validation error handler is called', function (done) {
+      function cb(err, result) {
+        checks.handler_err = err;
+        checks.handler_result = result;
+        done();
+      }
+      getbylistingid.handlers(cb)['400']({ foo: 'bar' });
+      checks.handler_err.message.should.equal('Validation error');
+      checks.handler_result.foo.should.equal('bar');
+    });
   });
 });
  
