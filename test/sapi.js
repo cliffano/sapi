@@ -91,6 +91,19 @@ describe('sapi', function () {
       checks.sapi_http_err.message.should.equal('Unexpected status code 503 from SAPI\nResponse body:\nunexpectedbody');
       should.not.exist(checks.sapi_http_result);
     });
+
+    it('should construct params when parameter functions are chained', function (done) {
+      mocks.request_result = { statusCode: 403 };
+      mocks.requires = {
+        request: bag.mock.request(checks, mocks)
+      };
+      sapi = new (create(checks, mocks))('somekey');
+      sapi.query('somequery').location('somelocation').search(function cb(err, result) {
+        done();
+      });
+      checks.request_opts.qs.query.should.equal('somequery');
+      checks.request_opts.qs.location.should.equal('somelocation');
+    });
   });
 
   describe('proxy', function () {
