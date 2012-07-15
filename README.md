@@ -21,7 +21,7 @@ or as a dependency in package.json file:
 Usage
 -----
 
-    var sapi = new (require('sapi'))('key', 'http://api.sensis.com.au/ob-20110511/test/');
+    var sapi = new (require('sapi'))('apikey', 'http://api.sensis.com.au/ob-20110511/test/');
 
     sapi.proxy('http://user:pass@proxy:8080'); // optional
 
