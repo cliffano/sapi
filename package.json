@@ -11,9 +11,6 @@
   "version": "0.0.6",
   "homepage": "http://github.com/cliffano/sapi",
   "author": "Cliffano Subagio <blah@cliffano.com> (http://blog.cliffano.com)",
-  "bin": {
-    "sapi": "./bin/sapi"
-  },
   "main": "./lib/sapi",
   "repository": {
     "type": "git",
