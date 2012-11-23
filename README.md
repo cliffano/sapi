@@ -21,9 +21,14 @@ or as a dependency in package.json file:
 Usage
 -----
 
-    var sapi = new (require('sapi'))('apikey', 'http://api.sensis.com.au/ob-20110511/test/');
+    var Sapi = require('sapi'),
+      sapi = new Sapi('apikey');
 
-    sapi.proxy('http://user:pass@proxy:8080'); // optional
+    // use custom URL
+    sapi = new Sapi('apikey', 'http://api.sensis.com.au/ob-20110511/test/');
+
+    // use proxy (optional)
+    sapi.proxy('http://user:pass@proxy:8080');
 
 Parameters can then be chained to an endpoint:
 
