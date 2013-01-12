@@ -1,5 +1,5 @@
-### 0.0.6 (SNAPSHOT)
-*
+### 0.1.0-pre
+* Update constructor signature, url and proxy are now optional
 
 ### 0.0.5
 * Handle non-200 endpoint response.
