@@ -22,13 +22,10 @@ Usage
 -----
 
     var Sapi = require('sapi'),
-      sapi = new Sapi('apikey');
-
-    // use custom URL
-    sapi = new Sapi('apikey', 'http://api.sensis.com.au/ob-20110511/test/');
-
-    // use proxy (optional)
-    sapi.proxy('http://user:pass@proxy:8080');
+      sapi = new Sapi('apikey', {
+        url: 'http://api.sensis.com.au/ob-20110511/test/',
+        proxy: 'http://user:pass@proxy:8080'
+      });
 
 Parameters can then be chained to an endpoint:
 
