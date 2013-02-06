@@ -1,61 +1,25 @@
-var bag = require('bagofholding'),
-  sandbox = require('sandboxed-module'),
-  should = require('should'),
-  checks, mocks,
-  metadata;
+var buster = require('buster'),
+  metadata = require('../../lib/endpoint/metadata');
 
-describe('metadata', function () {
-
-  function create(checks, mocks) {
-    return sandbox.require('../../lib/endpoint/metadata', {
-      requires: mocks ? mocks.requires : {},
-      globals: {}
-    });
+buster.testCase('metadata', {
+  'should have endpoint name': function () {
+    assert.equals(metadata.name, 'metadata');
+  },
+  'should have required params': function () {
+    assert.equals(metadata.params.required, ['key', 'dataType']);
+  },
+  'should have optional params': function () {
+    assert.equals(metadata.params.optional, []);
+  },
+  'should return endpoint name and dataType param as path': function () {
+    assert.equals(metadata.path({ dataType: 'somedatatype' }), 'metadata/somedatatype');
+  },
+  'should pass result to callback when success handler is called': function (done) {
+    function cb(err, result) {
+      assert.isNull(err);
+      assert.equals(result.foo, 'bar');
+      done();
+    }
+    metadata.handlers(cb)['200']({ foo: 'bar' });
   }
-
-  beforeEach(function () {
-    checks = {};
-    mocks = {};
-    metadata = create(checks, mocks);
-  });
-
-  describe('name', function () {
-
-    it('should have endpoint name', function () {
-      metadata.name.should.equal('metadata');
-    });
-  });
-
-  describe('params', function () {
-
-    it('should have required params', function () {
-      should.exist(metadata.params.required);
-    });
-
-    it('should have optional params', function () {
-      should.exist(metadata.params.optional);
-    });
-  });
-
-  describe('path', function () {
-
-    it('should return endpoint name and dataType param as path', function () {
-      metadata.path({ dataType: 'somedatatype' }).should.equal('metadata/somedatatype');
-    });
-  });
-
-  describe('handlers', function () {
-
-    it('should pass result to callback when success handler is called', function (done) {
-      function cb(err, result) {
-        checks.handler_err = err;
-        checks.handler_result = result;
-        done();
-      }
-      metadata.handlers(cb)['200']({ foo: 'bar' });
-      should.not.exist(checks.handler_err);
-      checks.handler_result.foo.should.equal('bar');
-    });
-  });
 });
- 

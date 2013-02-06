@@ -27,6 +27,8 @@ Usage
         proxy: 'http://user:pass@proxy:8080'
       });
 
+You can [apply for Sensis API key](http://developers.sensis.com.au/docs/getting_started/Apply_for_an_API_key) from Sensis Developer Centre.
+
 Parameters can then be chained to an endpoint:
 
     sapi

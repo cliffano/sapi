@@ -1,37 +1,19 @@
-var bag = require('bagofholding'),
-  _jscov = require('../lib/sapi'),
-  sandbox = require('sandboxed-module'),
-  should = require('should'),
-  checks, mocks,
-  sapi;
+var buster = require('buster'),
+  Sapi = require('../lib/sapi');
 
-describe('sapi', function () {
-
-  function create(checks, mocks) {
-    return sandbox.require('../lib/sapi', {
-      requires: mocks ? mocks.requires : {},
-      globals: mocks ? mocks.globals : {}
-    });
+buster.testCase('getbylistingid', {
+  'should set key and default url when url is not provided': function () {
+    var sapi = new Sapi('somekey');
+    assert.equals(sapi.params.key, 'somekey');
+    assert.equals(sapi.url, 'http://api.sensis.com.au/ob-20110511/test');
+  },
+  'should set specified key and url when provided': function () {
+    var sapi = new Sapi('somekey', { url: 'http://someurl' });
+    assert.equals(sapi.params.key, 'somekey');
+    assert.equals(sapi.url, 'http://someurl');
   }
-
-  beforeEach(function () {
-    checks = {};
-    mocks = {};
-  });
-
-  describe('sapi', function () {
-
-    it('should set key and default url when url is not provided', function () {
-      sapi = new (create(checks, mocks))('somekey');
-      sapi.params.key.should.equal('somekey');
-      sapi.url.should.equal('http://api.sensis.com.au/ob-20110511/test');
-    });
-
-    it('should set specified key and url when provided', function () {
-      sapi = new (create(checks, mocks))('somekey', 'http://someurl');
-      sapi.params.key.should.equal('somekey');
-      sapi.url.should.equal('http://someurl');
-    });
+});
+/*
 
     it('should pass error to callback when an error occurs while sending request', function (done) {
       mocks.request_err = new Error('someerror');
@@ -153,3 +135,4 @@ describe('sapi', function () {
   });
 });
  
+*/

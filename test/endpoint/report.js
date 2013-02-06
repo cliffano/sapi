@@ -1,83 +1,41 @@
-var bag = require('bagofholding'),
-  sandbox = require('sandboxed-module'),
-  should = require('should'),
-  checks, mocks,
-  report;
+var buster = require('buster'),
+  report = require('../../lib/endpoint/report');
 
-describe('report', function () {
-
-  function create(checks, mocks) {
-    return sandbox.require('../../lib/endpoint/report', {
-      requires: mocks ? mocks.requires : {},
-      globals: {}
-    });
+buster.testCase('report', {
+  'should have endpoint name': function () {
+    assert.equals(report.name, 'report');
+  },
+  'should have required params': function () {
+    assert.equals(report.params.required, ['key', 'userIp', 'id']);
+  },
+  'should have optional params': function () {
+    assert.equals(report.params.optional, ['userAgent', 'userSessionId', 'content']);
+  },
+  'should return endpoint name and eventName param as path': function () {
+    assert.equals(report.path({ eventName: 'someeventname' }), 'report/someeventname');
+  },
+  'should pass result to callback when success handler is called': function (done) {
+    function cb(err, result) {
+      assert.isNull(err),
+      assert.equals(result.foo, 'bar');
+      done();
+    }
+    report.handlers(cb)['200']({ foo: 'bar' });
+  },
+  'should pass result to callback when search modified handler is called': function (done) {
+    function cb(err, result) {
+      assert.isNull(err),
+      assert.equals(result.foo, 'bar');
+      done();
+    }
+    report.handlers(cb)['206']({ foo: 'bar' });
+  },
+  'should pass error and result to callback when validation error handler is called': function (done) {
+    function cb(err, result) {
+      assert.equals(err.message, 'Validation error');
+      assert.equals(result.foo, 'bar');
+      done();
+    }
+    report.handlers(cb)['400']({ foo: 'bar' });
   }
-
-  beforeEach(function () {
-    checks = {};
-    mocks = {};
-    report = create(checks, mocks);
-  });
-
-  describe('name', function () {
-
-    it('should have endpoint name', function () {
-      report.name.should.equal('report');
-    });
-  });
-
-  describe('params', function () {
-
-    it('should have required params', function () {
-      should.exist(report.params.required);
-    });
-
-    it('should have optional params', function () {
-      should.exist(report.params.optional);
-    });
-  });
-
-  describe('path', function () {
-
-    it('should return endpoint name and eventName param as path', function () {
-      report.path({ eventName: 'someeventname' }).should.equal('report/someeventname');
-    });
-  });
-
-  describe('handlers', function () {
-
-    it('should pass result to callback when success handler is called', function (done) {
-      function cb(err, result) {
-        checks.handler_err = err;
-        checks.handler_result = result;
-        done();
-      }
-      report.handlers(cb)['200']({ foo: 'bar' });
-      should.not.exist(checks.handler_err);
-      checks.handler_result.foo.should.equal('bar');
-    });
-
-    it('should pass result to callback when search modified handler is called', function (done) {
-      function cb(err, result) {
-        checks.handler_err = err;
-        checks.handler_result = result;
-        done();
-      }
-      report.handlers(cb)['206']({ foo: 'bar' });
-      should.not.exist(checks.handler_err);
-      checks.handler_result.foo.should.equal('bar');
-    });
-
-    it('should pass error and result to callback when validation error handler is called', function (done) {
-      function cb(err, result) {
-        checks.handler_err = err;
-        checks.handler_result = result;
-        done();
-      }
-      report.handlers(cb)['400']({ foo: 'bar' });
-      checks.handler_err.message.should.equal('Validation error');
-      checks.handler_result.foo.should.equal('bar');
-    });
-  });
 });
- 

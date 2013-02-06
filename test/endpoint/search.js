@@ -1,83 +1,41 @@
-var bag = require('bagofholding'),
-  sandbox = require('sandboxed-module'),
-  should = require('should'),
-  checks, mocks,
-  search;
+var buster = require('buster'),
+  search = require('../../lib/endpoint/search');
 
-describe('search', function () {
-
-  function create(checks, mocks) {
-    return sandbox.require('../../lib/endpoint/search', {
-      requires: mocks ? mocks.requires : {},
-      globals: {}
-    });
+buster.testCase('search', {
+  'should have endpoint name': function () {
+    assert.equals(search.name, 'search');
+  },
+  'should have required params': function () {
+    assert.equals(search.params.required, ['key', 'query', 'location']);
+  },
+  'should have optional params': function () {
+    assert.equals(search.params.optional, ['page', 'rows', 'sortBy', 'sensitiveCategories', 'categoryId', 'postcode', 'radius', 'locationTiers', 'suburb', 'state', 'boundingBox', 'content', 'productKeyword']);
+  },
+  'should return endpoint name as path': function () {
+    assert.equals(search.path(), 'search');
+  },
+  'should pass result to callback when success handler is called': function (done) {
+    function cb(err, result) {
+      assert.isNull(err);
+      assert.equals(result.foo, 'bar');
+      done();
+    }
+    search.handlers(cb)['200']({ foo: 'bar' });
+  },
+  'should pass result to callback when search modified handler is called': function (done) {
+    function cb(err, result) {
+      assert.isNull(err);
+      assert.equals(result.foo, 'bar');
+      done();
+    }
+    search.handlers(cb)['206']({ foo: 'bar' });
+  },
+  'should pass error and result to callback when validation error handler is called': function (done) {
+    function cb(err, result) {
+      assert.equals(err.message, 'Validation error');
+      assert.equals(result.foo, 'bar');
+      done();
+    }
+    search.handlers(cb)['400']({ foo: 'bar' });
   }
-
-  beforeEach(function () {
-    checks = {};
-    mocks = {};
-    search = create(checks, mocks);
-  });
-
-  describe('name', function () {
-
-    it('should have endpoint name', function () {
-      search.name.should.equal('search');
-    });
-  });
-
-  describe('params', function () {
-
-    it('should have required params', function () {
-      should.exist(search.params.required);
-    });
-
-    it('should have optional params', function () {
-      should.exist(search.params.optional);
-    });
-  });
-
-  describe('path', function () {
-
-    it('should return endpoint name as path', function () {
-      search.path().should.equal('search');
-    });
-  });
-
-  describe('handlers', function () {
-
-    it('should pass result to callback when success handler is called', function (done) {
-      function cb(err, result) {
-        checks.handler_err = err;
-        checks.handler_result = result;
-        done();
-      }
-      search.handlers(cb)['200']({ foo: 'bar' });
-      should.not.exist(checks.handler_err);
-      checks.handler_result.foo.should.equal('bar');
-    });
-
-    it('should pass result to callback when search modified handler is called', function (done) {
-      function cb(err, result) {
-        checks.handler_err = err;
-        checks.handler_result = result;
-        done();
-      }
-      search.handlers(cb)['206']({ foo: 'bar' });
-      should.not.exist(checks.handler_err);
-      checks.handler_result.foo.should.equal('bar');
-    });
-
-    it('should pass error and result to callback when validation error handler is called', function (done) {
-      function cb(err, result) {
-        checks.handler_err = err;
-        checks.handler_result = result;
-        done();
-      }
-      search.handlers(cb)['400']({ foo: 'bar' });
-      checks.handler_err.message.should.equal('Validation error');
-      checks.handler_result.foo.should.equal('bar');
-    });
-  });
 });
- 
