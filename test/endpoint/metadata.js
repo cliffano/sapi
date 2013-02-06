@@ -20,6 +20,6 @@ buster.testCase('metadata', {
       assert.equals(result.foo, 'bar');
       done();
     }
-    metadata.handlers(cb)['200']({ foo: 'bar' });
+    metadata.handlers[200]({ foo: 'bar' }, cb);
   }
 });

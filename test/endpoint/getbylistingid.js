@@ -20,7 +20,7 @@ buster.testCase('getbylistingid', {
       assert.equals(result.foo, 'bar');
       done();
     }
-    getbylistingid.handlers(cb)['200']({ foo: 'bar' });
+    getbylistingid.handlers[200]({ foo: 'bar' }, cb);
   },
   'should pass error and result to callback when validation error handler is called': function (done) {
     function cb(err, result) {
@@ -28,6 +28,6 @@ buster.testCase('getbylistingid', {
       assert.equals(result.foo, 'bar');
       done();
     }
-    getbylistingid.handlers(cb)['400']({ foo: 'bar' });
+    getbylistingid.handlers[400]({ foo: 'bar' }, cb);
   }
 });

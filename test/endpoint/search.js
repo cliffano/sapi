@@ -20,7 +20,7 @@ buster.testCase('search', {
       assert.equals(result.foo, 'bar');
       done();
     }
-    search.handlers(cb)['200']({ foo: 'bar' });
+    search.handlers[200]({ foo: 'bar' }, cb);
   },
   'should pass result to callback when search modified handler is called': function (done) {
     function cb(err, result) {
@@ -28,7 +28,7 @@ buster.testCase('search', {
       assert.equals(result.foo, 'bar');
       done();
     }
-    search.handlers(cb)['206']({ foo: 'bar' });
+    search.handlers[206]({ foo: 'bar' }, cb);
   },
   'should pass error and result to callback when validation error handler is called': function (done) {
     function cb(err, result) {
@@ -36,6 +36,6 @@ buster.testCase('search', {
       assert.equals(result.foo, 'bar');
       done();
     }
-    search.handlers(cb)['400']({ foo: 'bar' });
+    search.handlers[400]({ foo: 'bar' }, cb);
   }
 });
