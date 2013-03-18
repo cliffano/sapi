@@ -1,4 +1,4 @@
-Sapi [![http://travis-ci.org/cliffano/sapi](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi)
+Sapi [![Build Status](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi) [![Dependencies Status](https://david-dm.org/cliffano/sapi.png)](http://david-dm.org/cliffano/sapi)
 -----------
 
 Sapi is a [Sensis API](http://developers.sensis.com.au/about) Node.js client.
