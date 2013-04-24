@@ -1,4 +1,7 @@
-### 0.1.0-pre
+### 0.1.1-pre
+*
+
+### 0.1.0
 * Update constructor signature, url and proxy are now optional
 
 ### 0.0.5
