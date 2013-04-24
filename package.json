@@ -28,7 +28,7 @@
     "test": "./test"
   },
   "dependencies": {
-    "bagofholding": "0.1.2",
+    "bagofholding": "0.1.5",
     "underscore": "1.4.4"
   },
   "devDependencies": {
