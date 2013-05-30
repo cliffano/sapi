@@ -1,4 +1,7 @@
-### 0.1.1-pre
+### 0.1.2-pre
+*
+
+### 0.1.1
 * Replace bagofholding with bagofrequest, underscore with lodash
 
 ### 0.1.0
