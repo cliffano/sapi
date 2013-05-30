@@ -16,7 +16,7 @@ buster.testCase('report', {
   },
   'should pass result to callback when success handler is called': function (done) {
     function cb(err, result) {
-      assert.isNull(err),
+      assert.isNull(err);
       assert.equals(result.foo, 'bar');
       done();
     }
@@ -24,7 +24,7 @@ buster.testCase('report', {
   },
   'should pass result to callback when search modified handler is called': function (done) {
     function cb(err, result) {
-      assert.isNull(err),
+      assert.isNull(err);
       assert.equals(result.foo, 'bar');
       done();
     }
