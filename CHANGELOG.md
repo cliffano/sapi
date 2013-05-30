@@ -1,5 +1,5 @@
 ### 0.1.1-pre
-*
+* Replace bagofholding with bagofrequest, underscore with lodash
 
 ### 0.1.0
 * Update constructor signature, url and proxy are now optional

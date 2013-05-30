@@ -1,4 +1,4 @@
-var bag = require('bagofholding'),
+var bag = require('bagofrequest'),
   buster = require('buster'),
   Sapi = require('../lib/sapi');
 
@@ -17,7 +17,7 @@ buster.testCase('sapi', {
     var mockRequest = function (method, url, opts, cb) {
       opts.handlers[403]({ statusCode: 403 }, cb);
     };
-    this.stub(bag, 'http', { request: mockRequest });
+    this.stub(bag, 'request', mockRequest);
     var sapi = new Sapi('somekey');  
     sapi.search(function cb(err, result) {
       assert.equals(err.message, 'Authentication failed -  invalid key somekey');
@@ -29,7 +29,7 @@ buster.testCase('sapi', {
     var mockRequest = function (method, url, opts, cb) {
       opts.handlers[403]({ statusCode: 403 }, cb);
     };
-    this.stub(bag, 'http', { request: mockRequest });
+    this.stub(bag, 'request', mockRequest);
     var sapi = new Sapi();  
     sapi.search(function cb(err, result) {
       assert.equals(err.message, 'Authentication required - set API key in Sapi constructor');
@@ -43,7 +43,7 @@ buster.testCase('sapi', {
       assert.equals(opts.queryStrings.location, 'somelocation');
       opts.handlers[200]({ statusCode: 200 }, cb);
     };
-    this.stub(bag, 'http', { request: mockRequest });
+    this.stub(bag, 'request', mockRequest);
     var sapi = new Sapi('somekey');  
     sapi.query('somequery').location('somelocation').search(function cb(err, result) {
       assert.isNull(err);
