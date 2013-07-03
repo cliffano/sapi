@@ -1,5 +1,5 @@
 ### 0.1.2-pre
-*
+* Change default timeout from 2 secs to 30 secs
 
 ### 0.1.1
 * Replace bagofholding with bagofrequest, underscore with lodash
