@@ -1,4 +1,7 @@
-### 0.1.2-pre
+### 0.1.3-pre
+*
+
+### 0.1.2
 * Change default timeout from 2 secs to 30 secs
 
 ### 0.1.1
