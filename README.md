@@ -84,3 +84,8 @@ Check out Sensis API documentation for further details of the [endpoints](http:/
 * [Get by Listing ID](http://developers.sensis.com.au/docs/endpoint_reference/Get_by_Listing_ID)
 * [Report](http://developers.sensis.com.au/docs/endpoint_reference/Report)
 * [Metadata](http://developers.sensis.com.au/docs/endpoint_reference/Metadata)
+
+Colophon
+--------
+
+* [Sapi, A Node.js Client For Sensis API](http://blog.cliffano.com/2012/07/15/sapi-a-node-js-client-for-sensis-api/)
