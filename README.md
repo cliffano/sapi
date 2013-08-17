@@ -2,7 +2,7 @@ Sapi [![Build Status](https://secure.travis-ci.org/cliffano/sapi.png?branch=mast
 -----------
 <img align="right" src="https://raw.github.com/cliffano/sapi/master/avatar.jpg" alt="Avatar"/>
 
-Sapi is a [Sensis API](http://developers.sensis.com.au/about) Node.js client.
+Sapi is a [Sensis API](http://developers.sensis.com.au/about) node.js client.
 
 This is handy when you want to use [Sensis API](http://developers.sensis.com.au/about) service from a Node.js application. Sapi module provides a chainable interface to set the endpoint parameters.
 
