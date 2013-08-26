@@ -1,6 +1,13 @@
-Sapi [![Build Status](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi) [![Dependencies Status](https://david-dm.org/cliffano/sapi.png)](http://david-dm.org/cliffano/sapi) [![Published Version](https://badge.fury.io/js/sapi.png)](http://badge.fury.io/js/sapi)
------------
 <img align="right" src="https://raw.github.com/cliffano/sapi/master/avatar.jpg" alt="Avatar"/>
+
+[![Build Status](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi)
+[![Dependencies Status](https://david-dm.org/cliffano/sapi.png)](http://david-dm.org/cliffano/sapi)
+[![Published Version](https://badge.fury.io/js/sapi.png)](http://badge.fury.io/js/sapi)
+<br/>
+[![npm Badge](https://nodei.co/npm/sapi.png)](http://npmjs.org/package/sapi)
+
+Sapi
+----
 
 Sapi is a [Sensis API](http://developers.sensis.com.au/about) node.js client.
 
