@@ -1,5 +1,7 @@
-var buster = require('buster'),
-  report = require('../../lib/endpoint/report');
+var buster = require('buster-node'),
+  referee = require('referee'),
+  report = require('../../lib/endpoint/report'),
+  assert = referee.assert;
 
 buster.testCase('report', {
   'should have endpoint name': function () {

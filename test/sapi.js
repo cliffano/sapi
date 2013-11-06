@@ -1,6 +1,8 @@
 var bag = require('bagofrequest'),
-  buster = require('buster'),
-  Sapi = require('../lib/sapi');
+  buster = require('buster-node'),
+  referee = require('referee'),
+  Sapi = require('../lib/sapi'),
+  assert = referee.assert;
 
 buster.testCase('sapi', {
   'should set key and default url when url is not provided': function () {

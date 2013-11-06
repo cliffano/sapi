@@ -9,11 +9,11 @@
   "test": {
     "type": "buster"
   },
-  "test-integration": {
-    "type": "buster"
-  },
   "coverage": {
     "type": "buster-istanbul"
+  },
+  "test-integration": {
+    "type": "buster"
   },
   "doc": {
     "type": "dox-foundation"

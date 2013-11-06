@@ -1,5 +1,7 @@
-var buster = require('buster'),
-  metadata = require('../../lib/endpoint/metadata');
+var buster = require('buster-node'),
+  metadata = require('../../lib/endpoint/metadata'),
+  referee = require('referee'),
+  assert = referee.assert;
 
 buster.testCase('metadata', {
   'should have endpoint name': function () {

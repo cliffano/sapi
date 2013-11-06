@@ -1,5 +1,7 @@
-var buster = require('buster'),
-  getbylistingid = require('../../lib/endpoint/getbylistingid');
+var buster = require('buster-node'),
+  getbylistingid = require('../../lib/endpoint/getbylistingid'),
+  referee = require('referee'),
+  assert = referee.assert;
 
 buster.testCase('getbylistingid', {
   'should have endpoint name': function () {

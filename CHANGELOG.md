@@ -1,5 +1,6 @@
 ### 0.1.3-pre
-*
+* Change test lib to buster-node + referee
+* Set min node engine to >= v0.8.0
 
 ### 0.1.2
 * Change default timeout from 2 secs to 30 secs
