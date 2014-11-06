@@ -5,6 +5,9 @@ var bag = require('bagofrequest'),
   assert = referee.assert;
 
 buster.testCase('sapi', {
+  setUp: function () {
+    this.mock({});
+  },
   'should set key and default url when url is not provided': function () {
     var sapi = new Sapi('somekey');
     assert.equals(sapi.params.key, 'somekey');

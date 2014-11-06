@@ -4,6 +4,9 @@ var buster = require('buster-node'),
   assert = referee.assert;
 
 buster.testCase('search', {
+  setUp: function () {
+    this.mock({});
+  },
   'should have endpoint name': function () {
     assert.equals(search.name, 'search');
   },
