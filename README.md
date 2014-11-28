@@ -96,4 +96,8 @@ Check out Sensis API documentation for further details of the [endpoints](http:/
 Colophon
 --------
 
+[Developer's Guide](http://cliffano.github.io/developers_guide.html#nodejs)
+
+Articles:
+
 * [Sapi, A Node.js Client For Sensis API](http://blog.cliffano.com/2012/07/15/sapi-a-node-js-client-for-sensis-api/)
