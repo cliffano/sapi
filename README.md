@@ -98,6 +98,14 @@ Colophon
 
 [Developer's Guide](http://cliffano.github.io/developers_guide.html#nodejs)
 
+Build reports:
+
+* [Code complexity report](http://cliffano.github.io/sapi/bob/complexity/plato/index.html)
+* [Unit tests report](http://cliffano.github.io/sapi/bob/test/buster.out)
+* [Test coverage report](http://cliffano.github.io/sapi/bob/coverage/buster-istanbul/lcov-report/lib/index.html)
+* [Integration tests report](http://cliffano.github.io/sapi/bob/test-integration/buster.out)
+* [API Documentation](http://cliffano.github.io/sapi/bob/doc/dox-foundation/index.html)
+
 Articles:
 
 * [Sapi, A Node.js Client For Sensis API](http://blog.cliffano.com/2012/07/15/sapi-a-node-js-client-for-sensis-api/)
