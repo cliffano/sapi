@@ -1,7 +1,7 @@
 <img align="right" src="https://raw.github.com/cliffano/sapi/master/avatar.jpg" alt="Avatar"/>
 
-[![Build Status](https://secure.travis-ci.org/cliffano/sapi.png?branch=master)](http://travis-ci.org/cliffano/sapi)
-[![Dependencies Status](https://david-dm.org/cliffano/sapi.png)](http://david-dm.org/cliffano/sapi)
+[![Build Status](https://img.shields.io/travis/cliffano/sapi.svg)](http://travis-ci.org/cliffano/sapi)
+[![Dependencies Status](https://img.shields.io/david/cliffano/sapi.svg)](http://david-dm.org/cliffano/sapi)
 [![Coverage Status](https://coveralls.io/repos/cliffano/sapi/badge.png?branch=master)](https://coveralls.io/r/cliffano/sapi?branch=master)
 [![Published Version](https://badge.fury.io/js/sapi.png)](http://badge.fury.io/js/sapi)
 <br/>
