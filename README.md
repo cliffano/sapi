@@ -2,8 +2,8 @@
 
 [![Build Status](https://img.shields.io/travis/cliffano/sapi.svg)](http://travis-ci.org/cliffano/sapi)
 [![Dependencies Status](https://img.shields.io/david/cliffano/sapi.svg)](http://david-dm.org/cliffano/sapi)
-[![Coverage Status](https://coveralls.io/repos/cliffano/sapi/badge.png?branch=master)](https://coveralls.io/r/cliffano/sapi?branch=master)
-[![Published Version](https://badge.fury.io/js/sapi.png)](http://badge.fury.io/js/sapi)
+[![Coverage Status](https://img.shields.io/coveralls/cliffano/sapi.svg)](https://coveralls.io/r/cliffano/sapi?branch=master)
+[![Published Version](https://img.shields.io/npm/v/sapi.svg)](http://www.npmjs.com/package/sapi)
 <br/>
 [![npm Badge](https://nodei.co/npm/sapi.png)](http://npmjs.org/package/sapi)
 
