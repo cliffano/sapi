@@ -1,0 +1,5 @@
+[ 'lib/endpoint/getbylistingid.js',
+  'lib/endpoint/metadata.js',
+  'lib/endpoint/report.js',
+  'lib/endpoint/search.js',
+  'lib/sapi.js' ]
