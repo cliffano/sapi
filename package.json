@@ -28,8 +28,8 @@
     "test": "./test"
   },
   "dependencies": {
-    "bagofrequest": "^0.1.0",
-    "lodash": "^3.7.0"
+    "bagofrequest": "^0.1.2",
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "buster-node": "^0.7.1",
