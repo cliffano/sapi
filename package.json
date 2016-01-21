@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "bagofrequest": "^0.1.2",
-    "lodash": "^3.10.1"
+    "lodash": "^4.0.0"
   },
   "devDependencies": {
     "buster-node": "^0.7.1",
-    "referee": "^1.1.1"
+    "referee": "^1.2.0"
   },
   "scripts": {},
   "engines": {
