@@ -1,3 +1,6 @@
+### 0.2.1
+*
+
 ### 0.2.0
 * Set min node engine to >= v4.0.0
 
